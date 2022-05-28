@@ -3,35 +3,46 @@ import React from 'react';
 import { Route, Routes, Link } from "react-router-dom";
 import About from './pages/About';
 import Home from './pages/Home';
+import Contact from './pages/Contact';
 
 class App extends React.Component {
   render() {
       return (
-        <div className="App">
-          <div>
-            <nav>
-              <ul id="navigation">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                <Link to="/about">About</Link>
-                </li>
-                <li>
-                <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
+        <div className="App container my-5">
+           
+           <div className="row">
 
-            <Routes>
-            <Route exact path="/" element={<Home />} />
+            <div className="col-3 bg-warning">
+              First in DOM, no order applied
+              <nav>
+                <h3><Link to="/">Home</Link></h3>
+                <h3><Link to="/about">About</Link></h3>
+                <h3><Link to="/contact">Contact</Link></h3>
+              </nav>
+              <Routes>
+                <Route exact path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+          
 
-            <Route path="/about" element={<About />} />
-      
-          </Routes>
+
+            </div>
+            <div className="col bg-secondary">
+              Second in DOM, with a larger order
+
+              <Home />
+
+
+
+
+            </div> {/* 2nd col end*/}
+
+          </div> {/* End of Row container*/}
+\
+
           </div>
-            );
+          );
   }
 }
 
